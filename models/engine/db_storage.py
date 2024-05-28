@@ -77,18 +77,25 @@ class DBStorage:
 
     def get(self, cls, id):
         """This retrieves an object based on the class and ID or
-        None if not found"""
+        None if not found
         the_key = "{}.{}".format(cls.__name__, id)
         try:
             the_obj = DBStorage.__objects[the_key]
         except KeyError as e:
             return None
-        return the_obj
+        return obj"""
+        if cls in classes.values() and id:
+            return self.__session.query(cls).get(id)
+        return None
 
     def count(self, cls=None):
         """This returns the numbber of objects in storage based on
         the class or count of all objects in the storage if no
-        class is passed"""
+        class is passed
         if cls:
             return len(self.all(cls))
-        return len(self.__objects)
+        return len(self.__objects)"""
+        if cls in classes.values():
+            return self.__session.query(cls).count()
+        return sum(self.__session.query(classes[clss]).count()
+                   for clss in classes)
