@@ -80,7 +80,7 @@ class DBStorage:
         None if not found"""
         the_key = "{}.{}".format(cls.__name__, id)
         try:
-            the_obj = FileStorage.__objects[the_key]
+            the_obj = DBStorage.__objects[the_key]
         except KeyError as e:
             return None
         return the_obj
