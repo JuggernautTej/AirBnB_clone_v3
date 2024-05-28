@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Some comment"""
 
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 import os
@@ -15,6 +15,12 @@ def storage_close(errs):
     """This method calls the close method when an
     exception or error is encountered"""
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found(error):
+    """This method handles error 404"""
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 
 if __name__ == '__main__':
