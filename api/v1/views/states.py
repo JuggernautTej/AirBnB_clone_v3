@@ -15,7 +15,7 @@ def all_state_objs():
     return jsonify(list_state), 200
 
 
-@app_views.route("/api/v1/states/<state_id>",
+@app_views.route("/states/<state_id>",
                  methods=["GET"], strict_slashes=False)
 def state_objs(state_id):
     """This retrieves a single state object"""
@@ -25,7 +25,7 @@ def state_objs(state_id):
     return jsonify(state.to_dict()), 200
 
 
-@app_views.route("/api/v1/states/<state_id>",
+@app_views.route("/states/<state_id>",
                  methods=["DELETE"], strict_slashes=False)
 def del_state(state_id):
     """Delects state objext"""
@@ -39,7 +39,7 @@ def del_state(state_id):
     return jsonify({}), 200
 
 
-@app_views.route("/api/v1/states", methods=["POST"], strict_slashes=False)
+@app_views.route("/states", methods=["POST"], strict_slashes=False)
 def creates_state():
     """creates a state object"""
     try:
@@ -54,7 +54,7 @@ def creates_state():
     return jsonify(new_obj.to_dict()), 201
 
 
-@app_views.route("/api/v1/states/<state_id>",
+@app_views.route("/states/<state_id>",
                  methods=["PUT"], strict_slashes=False)
 def update_state(state_id):
     """This updates the state object"""
