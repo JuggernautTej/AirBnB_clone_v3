@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Handles all default RESTful actions"""
 
-from flask import Flask, abort, jsonify, request
+from flask import abort, jsonify, request
 from api.v1.views import app_views
 from models import storage
 from models.state import State
